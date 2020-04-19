@@ -19,7 +19,7 @@ def bubble_sort(lyst):
     :return:
     """
     step = 0
-    for n in range(len(lyst)-1, 0, -1):
+    for n in range(len(lyst), 0, -1):
         for m in range(1, n):
             step += 1
             if lyst[m] < lyst[m-1]:
@@ -35,7 +35,7 @@ def bubble_sort_early_terminal(lyst):
     :return:
     """
     step = 0
-    for n in range(len(lyst) - 1, 0, -1):
+    for n in range(len(lyst), 0, -1):
         sorted_flag = False  # the rest is or not sorted
         for m in range(1, n):
             step += 1
@@ -50,7 +50,7 @@ def bubble_sort_early_terminal(lyst):
 
 
 if __name__ == "__main__":
-    lyst = [1, 2, 3, 6, 5, 4, 9, 10]
+    lyst = [1, 2, 3, 6, 5, 8, 10, 4, 9]
     print(bubble_sort(lyst))
 
     print(bubble_sort_early_terminal(lyst))

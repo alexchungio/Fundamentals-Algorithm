@@ -90,7 +90,7 @@ def stable_select_sort(lyst):
 if __name__ == "__main__":
     # input_data = input("Enter numbers separated by a comma:\n").strip()
     # unsorted = [int(item) for item in input_data.split(",")]
-    lyst = [6, 1, 2, 5, 3, 4, 8, 9, 10]
+    lyst = [1, 2, 3, 6, 5, 8, 10, 4, 9]
     print(stable_select_sort(lyst))
 
 

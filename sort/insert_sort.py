@@ -32,6 +32,7 @@ def insert_sort(lyst):
     print(step)
     return lyst
 
+
 if __name__ == "__main__":
 
     lyst = [1, 2, 3, 6, 5, 10, 4, 9]
