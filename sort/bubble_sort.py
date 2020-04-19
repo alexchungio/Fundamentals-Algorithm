@@ -1,6 +1,6 @@
 # @Time 2020/04/19 17:32
 # @Author AlexChung
-
+# Time Complexity O(n**2)
 
 def swap(lyst, m, n):
     """

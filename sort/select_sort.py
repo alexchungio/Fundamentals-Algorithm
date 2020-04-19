@@ -1,6 +1,6 @@
 # @Time 2020/04/15 20:12
 # @Author AlexChung
-
+# @ Time Complexity O(n**2)
 
 import os
 
@@ -90,8 +90,8 @@ def stable_select_sort(lyst):
 if __name__ == "__main__":
     # input_data = input("Enter numbers separated by a comma:\n").strip()
     # unsorted = [int(item) for item in input_data.split(",")]
-    l = [6, 1, 2, 5, 3, 4, 8, 9, 10]
-    print(stable_select_sort(l))
+    lyst = [6, 1, 2, 5, 3, 4, 8, 9, 10]
+    print(stable_select_sort(lyst))
 
 
 
