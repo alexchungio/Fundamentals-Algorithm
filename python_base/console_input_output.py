@@ -16,20 +16,20 @@ def input_multi_line():
     输入多行数据
     :return:
     """
-    try:
-        lyst = []
-        # for line in sys.stdin
-        while True:
-            line = sys.stdin.readline().strip()
-            # if line == ''
-            if not line:
-                break
-            line = list(map(int, line.split()))
-            lyst.append(line)
-        print(lyst)
-    except Exception as e:
-        print(e)
-        pass
+    while True:
+        try:
+            lyst = []
+            # for line in sys.stdin
+            while True:
+                line = sys.stdin.readline().strip()
+                # if line == ''
+                if not line:
+                    break
+                line = list(map(int, line.split()))
+                lyst.append(line)
+            print(lyst)
+        except Exception as e:
+            break
 
 
 def input_fixed_line():
@@ -38,17 +38,17 @@ def input_fixed_line():
     后面依次输入对应行数据
     :return:
     """
-    try:
-        num_line = int(input())
-        lyst = []
-        for index in range(num_line):
-            line = sys.stdin.readline()
-            line = list(map(int, line.strip().split()))
-            lyst.append(line)
-        print(lyst)
-    except Exception as e:
-        print(e)
-        pass
+    while True:
+        try:
+            num_line = int(input())
+            lyst = []
+            for index in range(num_line):
+                line = sys.stdin.readline()
+                line = list(map(int, line.strip().split()))
+                lyst.append(line)
+            print(lyst)
+        except Exception as e:
+            break
 
 
 def compare_input_readline():
