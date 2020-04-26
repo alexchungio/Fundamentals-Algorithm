@@ -20,36 +20,67 @@ def check_mask_ip(ip):
     # check ip valid
     if not check_ip(ip):
         return False
-
     ip = list(map(int, ip))
+    pre_one_all = [254, 252, 248, 240, 224, 192, 128, 0]
     # check ip is all 0 or 255
-    if ip in [[0, 0, 0, 0], [255, 255, 255, 255]]:
-        return False
-
-    pre_one_all = [255, 254, 252, 248, 240, 224, 192, 128]
-    num_flag = 0
+    # if ip in [[0, 0, 0, 0], [255, 255, 255, 255]]:
+    #     return False
+    # num_flag = 0
     # check last three part
-    for num in ip[::-1][:-1]:
-        if num == 255:
-            num_flag = 255
-        if num == num_flag:
-            continue
+    # for num in ip[::-1][:-1]:
+    #     if num == 255:
+    #         num_flag = 255
+    #     if num == num_flag:
+    #         continue
+    #     else:
+    #         return False
+    # # check the fist part
+    # if num_flag == 0:
+    #     if ip[0] in pre_one_all:
+    #         return True
+    #     else:
+    #         return False
+    # elif num_flag == 255:
+    #     if ip[0] == 255:
+    #         return True
+    #     else:
+    #         return False
+    # elif ip[0] in pre_one_all:
+    # else:
+    # return False
+
+    if ip[0] == 255:
+        if ip[1] == 255:
+            if ip[2] == 255:
+                if ip[3] in pre_one_all:
+                    return True
+                else:
+                    return False
+            elif ip[2] in pre_one_all:
+                if ip[3] == 0:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        elif ip[1] in pre_one_all:
+            if ip[2] == ip[3] == 0:
+                return True
+            else:
+                return False
         else:
             return False
-    # check the fist part
-    if num_flag == 0:
-        if ip[0] in pre_one_all:
+    elif ip[0] in pre_one_all:
+        if ip[1] == ip[2] == ip[3] == 0:
             return True
         else:
             return False
-    elif num_flag == 255:
-        if ip[0] == 255:
-            return True
-        else:
-            return False
+    else:
+        return False
 
 
 if __name__ == "__main__":
+
     num_a, num_b, num_c, num_d, num_e = 0, 0, 0, 0, 0
     num_error, num_private = 0, 0
 
@@ -57,6 +88,7 @@ if __name__ == "__main__":
         try:
             line = sys.stdin.readline().strip()
             if line == "":
+                print("{0} {1} {2} {3} {4} {5} {6}".format(num_a, num_b, num_c, num_d, num_e, num_error, num_private))
                 break
             ip, mask_ip = line.split('~')
 
@@ -83,4 +115,3 @@ if __name__ == "__main__":
 
         except Exception as e:
             print(e)
-    print("{0} {1} {2} {3} {4} {5} {6}".format(num_a, num_b, num_c, num_d, num_e, num_error, num_private))
