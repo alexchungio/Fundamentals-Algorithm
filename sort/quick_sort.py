@@ -29,7 +29,7 @@ def quick_sort_recursion_module(lyst, left, right):
     if left < right:
         pivot_location = partition(lyst, left, right)
         quick_sort_recursion_module(lyst, left, pivot_location - 1)
-        quick_sort_recursion_module(lyst, right, pivot_location + 1)
+        quick_sort_recursion_module(lyst, pivot_location + 1, right)
 
 
 def partition(lyst, left, right):
@@ -56,8 +56,7 @@ def partition(lyst, left, right):
     return boundary
 
 
-
-
-
 if __name__ == "__main__":
-    pass
+    lyst = [1, 2, 3, 6, 5, 10, 4, 9]
+    quick_sort(lyst)
+    print(lyst)
