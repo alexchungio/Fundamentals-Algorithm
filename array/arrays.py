@@ -33,10 +33,10 @@ if __name__ == "__main__":
     a = Array(10, 1)
     print(len(a))
 
-    # test set value
+    # traverse array and set value
     for index in range(len(a)):
         a[index] = a[index] + index
 
-    # iterate array
+    # traverse array and print
     for item in a:
-        print(a)
+        print(item)
