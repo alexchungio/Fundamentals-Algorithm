@@ -81,6 +81,8 @@ def delete(a: Array, target_index):
     # step 2 decrement logical size
     logical_size -= 1
     # decrease size fo array if necessary
+    # logical_size <= len(a) // 4 保证压缩物理空间后，物理空间压缩一半后，物理空间为逻辑空间的2倍
+    # len(a) >= capacity_size * 2 保证物理空间至少为容量空间（最小单位）的2倍，才能继续执行压缩
     if logical_size <= len(a) // 4 and len(a) >= capacity_size * 2:
         a = resize(a, len(a) // 2)
     return a
