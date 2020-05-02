@@ -105,11 +105,10 @@ def recurse_reverse(head:Node):
         return head
     else:
         new_head = recurse_reverse(head.next)
-
+        # 将之前的节点放入子链尾
         head.next.next = head
         head.next = None
-
-    return new_head
+        return new_head
 
 
 if __name__ == "__main__":
@@ -120,9 +119,9 @@ if __name__ == "__main__":
     traversal_linked(head)
 
     # reverse linked
-    print("local reverse result")
-    head = local_reversal(head)
-    traversal_linked(head)
+    # print("local reverse result")
+    # head = local_reversal(head)
+    # traversal_linked(head)
 
     print("recurse reverse result")
     head = recurse_reverse(head)
