@@ -1,9 +1,10 @@
 # @Time 2020/05/01 16:30
 # @Author AlexChung
-
+# reference https://www.jianshu.com/p/f7534f8d7bf2
 
 from Linked.node import Node
 from Linked.single_linked import insert_tail, traversal_linked
+
 
 def local_reversal(head:Node):
     """
@@ -36,7 +37,7 @@ def local_reversal(head:Node):
     else:
         # loop condition
         while p_cur != None:
-            # step 3.1 update p_pre loop position
+            # step 3.1 update and save loop position.
             # after this step, we can operation p_cur, equal to separate p_cur to linked
             p_pre.next = p_cur.next
             # step 3.2 insert current to the head of new linked
@@ -56,10 +57,59 @@ def local_reversal(head:Node):
 def insert_reversal(head:Node):
     """
     头节点插入法（需新建链表）
+    本质上和 local_reversal 是一样的
+    反转过程
+    dummy->1
+    dummy->2->1
+    dummy->3->2->1
+    dummy->4->3->2->1
+    dummy->5->4->3->2->1
+
+    # 需要三个指针
+    dummy: 用于指向新链表的头节点
+    p_cur: 当前待反转节点
+    p_next: 当前节点的下一节点
     :param head:
     :return:
     """
-    pass
+    # step 1 initial node
+    dummy = Node(-1)
+    dummy.next = head
+    p_cur = head
+
+    # step 2 one node condition
+    if p_cur is None or p_cur.next is None:
+        return head
+    # step 3
+    while p_cur is not None:
+        # step 3.1 update and save loop position.
+        p_next = p_cur.next
+        # step 3.2
+        p_cur.next = dummy.next
+        dummy.next = p_cur
+        p_cur = p_next
+    head = dummy.next
+
+    return head
+
+
+def recurse_reverse(head:Node):
+    """
+    递归方式
+    基线条件：空链或只有一个结点，直接返回头指针
+    递归条件：递归调用，返回子链表反转后的头指针
+    :param head:
+    :return:
+    """
+    if head is None or head.next is None:
+        return head
+    else:
+        new_head = recurse_reverse(head.next)
+
+        head.next.next = head
+        head.next = None
+
+    return new_head
 
 
 if __name__ == "__main__":
@@ -72,4 +122,8 @@ if __name__ == "__main__":
     # reverse linked
     print("local reverse result")
     head = local_reversal(head)
+    traversal_linked(head)
+
+    print("recurse reverse result")
+    head = recurse_reverse(head)
     traversal_linked(head)
