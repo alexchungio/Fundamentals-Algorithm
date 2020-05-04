@@ -98,15 +98,24 @@ def recurse_reverse(head:Node):
     递归方式
     基线条件：空链或只有一个结点，直接返回头指针
     递归条件：递归调用，返回子链表反转后的头指针
+    思路：new_head 为反向链表的头节点，反向遍历，将head节点的下一节点依次插入new_head链表队尾
+    反转过程
+    5
+    5->4
+    5->4->3
+    5->4->3->2
+    5->4->3->2->1
     :param head:
     :return:
     """
     if head is None or head.next is None:
         return head
     else:
+        # 这里 new_head 链表的队尾节点都是当前head节点的下一节点
         new_head = recurse_reverse(head.next)
-        # 将之前的节点放入子链尾
+        # 将当前 head 节点为头节点的链表插入到new_head队尾
         head.next.next = head
+        # 只保留head的下一节点到new_head队尾
         head.next = None
         return new_head
 
@@ -119,9 +128,9 @@ if __name__ == "__main__":
     traversal_linked(head)
 
     # reverse linked
-    # print("local reverse result")
-    # head = local_reversal(head)
-    # traversal_linked(head)
+    print("local reverse result")
+    head = local_reversal(head)
+    traversal_linked(head)
 
     print("recurse reverse result")
     head = recurse_reverse(head)
