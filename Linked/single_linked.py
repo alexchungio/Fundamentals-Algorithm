@@ -9,8 +9,8 @@ from Linked.node import Node
 def insert_head(head:Node, item):
     """
     add node to head
-    :param data:
-    :param linked:
+    :param head:
+    :param item:
     :return:
     """
     # if head is None:
@@ -59,7 +59,7 @@ def delete_head(head:Node):
     return head
 
 
-def delete_tail(head:Node):
+def delete_tail(head):
     """
     delete from tail
     :param head:
@@ -111,7 +111,7 @@ def insert(head:Node, index, item):
     return head
 
 
-def delete(head:Node, index):
+def delete(head, index):
     """
     delete anywhere of index
     if index low 0 then insert to head(0 index)
@@ -136,7 +136,7 @@ def delete(head:Node, index):
     return head
 
 
-def traversal_linked(head:Node):
+def traversal_linked(head):
     """
     traversal linked list
     :param head:
@@ -144,6 +144,7 @@ def traversal_linked(head:Node):
     """
     probe = head
     while probe != None:
+        # print(probe.data, end="")
         print(probe.data)
         probe = probe.next
 
