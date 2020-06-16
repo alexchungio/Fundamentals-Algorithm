@@ -13,6 +13,7 @@
 import os
 import array
 
+
 """
 Stack ADT: ArrayStack
 
@@ -31,6 +32,7 @@ This makes it an adapter class for the list,
 since it adheres to the Stack ADT but does not change
 the implementation of the underlying list type.
 """
+
 
 class ArrayStack(object):
     """
@@ -81,11 +83,17 @@ if __name__ == "__main__":
     a = ArrayStack()
     a.push(5)
     a.push(15)
+
+    # iterate stack
+    for item in a:
+        print(item)
+
     print("Peeking: {0}".format(a.peek()))
     print("Length of stack: {0}".format(len(a)))
     print("Pop: {0}".format(a.pop()))
     print("Length of stack: {0}".format(len(a)))
     print("Pop: {0}".format(a.pop()))
     print("Length of stack: {0}".format(len(a)))
+
 
 
