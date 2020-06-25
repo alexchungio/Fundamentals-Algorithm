@@ -40,7 +40,7 @@ def merge(lyst, low, middle, high):
     """
     copy_buffer = [0] * len(lyst)
 
-    # allocate start index of left and right list
+    # initialize the first item in each sublist
     left_index = low
     right_index = middle + 1
 
