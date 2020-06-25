@@ -39,8 +39,8 @@ def merge(lyst, low, middle, high):
     :return:
     """
     copy_buffer = [0] * len(lyst)
-    print(copy_buffer)
-    print(low, high)
+
+    # allocate start index of left and right list
     left_index = low
     right_index = middle + 1
 
