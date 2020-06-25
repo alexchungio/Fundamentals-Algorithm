@@ -59,13 +59,12 @@ def merge(lyst, low, middle, high):
         else:
             copy_buffer[i] = lyst[right_index]
             right_index += 1
-    # copy sorted item back to proper position in lyst
 
+    # copy sorted item back to proper position in lyst
     lyst[low: high+1] = copy_buffer[low: high+1]
 
 
 if __name__ == "__main__":
-     lyst = [1, 2, 3, 6, 5, 10, 4, 9]
-     #
+     lyst = [1, 2, 7, 8, 6, 5, 10, 4, 9]
      merge_sort(lyst)
      print(lyst)
