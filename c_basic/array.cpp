@@ -7,12 +7,16 @@
 
 #include <stdio.h>
 
+#define ROW_LEN 2
+#define COL_LEN 3
+
 void show_one_pointer(int * a,  int size);
 
 void show_one_array(int a [], int size);
 
 void show_two_pointer(int * a,  int row_size, int col_size);
 
+void show_tow_array(int a[][COL_LEN], int row);
 
 int main(void){
     
@@ -28,13 +32,16 @@ int main(void){
     show_one_array(a_1, size_1);
 
     // multi dimension array
-    int b_0[2][3] = {1, 2, 3, 4, 5, 6};
-    int b_1[][3] = {6, 5, 4, 3, 2, 1};
+    int b_0[ROW_LEN][COL_LEN] = {1, 2, 3, 4, 5, 6};
+    int b_1[][COL_LEN] = {6, 5, 4, 3, 2, 1};
     
-    //int raw_size_0 = sizeof(b_0) / sizeof(b_0[][0]);
-    //int col_size_0 = sizeof(b_0) / sizeof(b_0[0][]);
+    printf("b_0:\n");
+    int raw_size_0 = sizeof(b_0) / sizeof(b_0[0]);
+    int col_size_0 = sizeof(b_0[0]) / sizeof(b_0[0][0]);
+    show_two_pointer(&b_0[0][0], raw_size_0, col_size_0);
 
-    show_two_pointer(&b_0[0][0], 2, 3);
+    printf("b_1:\n");
+    show_tow_array(b_1, ROW_LEN);
 }
 
 
@@ -64,7 +71,16 @@ void show_two_pointer(int * a,  int row, int col){
         }
         printf("\n");   
     }
-    
+
+}
+
+void show_tow_array(int a[][COL_LEN], int row){
+    for (int i=0; i<row; i++){
+        for (int j=0; j<COL_LEN; j++){
+            printf("%d ", a[i][j]);
+            }
+    printf("\n"); 
+    }
 }
 
 //void show_two_array(int a [], int row_size, int col_size){}
