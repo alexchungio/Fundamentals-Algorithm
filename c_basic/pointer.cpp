@@ -15,9 +15,9 @@ void pointer_start();
 int find_max_min_a(int *, int, int*, int*);
 int find_largest(int *, int);
 // int find_max_min_b(int *, int, int*, int*);
-int find_row_largest_a(int * ,  int , int );//
+int find_row_largest_a(const int * ,  int , int );//
 int find_row_largest_b(int * ,  int , int );
-int find_col_largest_a(int * ,  int , int );//
+int find_col_largest_a(const int * ,  int , int );//
 
 int main(){
 
@@ -49,7 +49,7 @@ int main(){
     //get largest of col
     int dst_col = 1;
     printf("lagest value of %d col is %d\n", dst_col, find_col_largest_a(b[0], num_row, dst_col));
-    printf("lagest value of %d col is %d\n", dst_col, find_col_largest_b(b[0], num_row, num_col, dst_col));
+    //printf("lagest value of %d col is %d\n", dst_col, find_col_largest_b(b[0], num_row, num_col, dst_col));
     
     return 0;
 }
@@ -115,7 +115,7 @@ int find_largest(int* a, int n){
 }
 
 
-int find_row_largest_a(int * a ,  int num_col , int dst_row ){
+int find_row_largest_a(const int * a ,  int num_col , int dst_row ){
     int v_largest = *(a+ dst_row);
     for (int i=0; i<num_col; i++){
         if (*((a+dst_row)+i)>v_largest){
@@ -125,9 +125,9 @@ int find_row_largest_a(int * a ,  int num_col , int dst_row ){
     return v_largest;
 }
 
-int find_row_largest_b(int * a  ,  int num_col , int dst_row ){
+int find_row_largest_b(int* a  ,  int num_col , int dst_row ){
     int v_largest = *(a + dst_row);
-    int * p;
+    int * p=NULL;
     for ( p=a+dst_row*num_col; p<a+(dst_row+1)*num_col; p++){
         if (*p > v_largest){
             v_largest = *p;
@@ -137,7 +137,7 @@ int find_row_largest_b(int * a  ,  int num_col , int dst_row ){
 }
 
 
-int find_col_largest_a(int * a ,  int num_row , int dst_col){
+int find_col_largest_a(const int * a ,  int num_row , int dst_col){
     int v_largest = *(a+ dst_col);
     
     for(int i=0; i<num_row; i++){
