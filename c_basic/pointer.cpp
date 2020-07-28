@@ -1,5 +1,5 @@
 /*****************************************************************
- * Name: pointter.cpp                                       *
+ * Name: pointer.cpp                                       *
  * Function:                                                     *
  * Author: Alex Chung                                            *
  * Time: 2020/7/23 PM 17:04                                      *
@@ -19,7 +19,7 @@ int find_row_largest_a(const int * ,  int , int );//
 int find_row_largest_b(int * ,  int , int );
 int find_col_largest_a(const int * ,  int , int );//
 
-int main(){
+int main(int argc, char *argv[]){
 
     pointer_start();
     
@@ -50,7 +50,34 @@ int main(){
     int dst_col = 1;
     printf("lagest value of %d col is %d\n", dst_col, find_col_largest_a(b[0], num_row, dst_col));
     //printf("lagest value of %d col is %d\n", dst_col, find_col_largest_b(b[0], num_row, num_col, dst_col));
+
+
+    /*二维数组指针(数组的数组)*/
+    int c [2][3] = {1, 2, 3, 4, 5, 6};
     
+    int (*p_1)[3] = c; 
+    printf("p[][] equal to (*p)[]:\n");
+    for(int i=0; i<2; i++){
+        for(int j=0; j<3; j++){
+            printf("%d ", *(*(p_1+i)+j));
+        }
+        printf("\n");
+    }
+
+    /*指针的指针与指针数组*/
+    printf("*p[] equal to **p\n");
+    int p[3] = {1, 2, 3};
+    int q[3] = {4, 5, 6};
+    int * d[2] = {p, q};
+    int **p_2 = d;
+    for(int i=0; i<2; i++){
+        for(int j=0; j<3; j++){
+            printf("%d ", *(*(p_2+i)+j));
+        }
+        printf("\n");
+    }
+
+
     return 0;
 }
 
@@ -76,7 +103,6 @@ void pointer_start(){
     printf("i=%d, p=%d, *p=%d, q=%d, *q=%d\n", i, p, *p, q, *q);
     
 }
-
 
 int find_max_min_a(int* a, int n,  int* min, int* max){
 
