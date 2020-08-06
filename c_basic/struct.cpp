@@ -14,13 +14,13 @@ struct demo_struct{
     int y = 0;
 } m, n;
 
-struct enum_struct{
+typedef struct {
     int type=RECTANGULAR;
     int x = 0;
     int y = 0;
-} s, t;
+} enum_struct;
 
-demo_struct add_struct(demo_struct, demo_struct);
+struct demo_struct add_struct(demo_struct, demo_struct);
 
 
 int main(){
@@ -31,7 +31,7 @@ int main(){
     n.y = 4;
     printf("x=%d y=%d\n", m.x, m.y);
     printf("x=%d y=%d\n", n.x, n.y);
-    demo_struct z;
+    struct demo_struct z;
     z = add_struct(m, n);
     printf("x=%d y=%d\n", z.x, z.y);
       
