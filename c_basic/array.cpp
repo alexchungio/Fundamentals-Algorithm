@@ -6,6 +6,7 @@
  * **************************************************************/
 
 #include <stdio.h>
+#include <assert.h>
 
 #define ROW_LEN 2
 #define COL_LEN 3
@@ -19,6 +20,7 @@ void show_one_array(int [], int ); // omit parameter name in typeproto
 void show_two_pointer(int * ,  int , int );//
 //void show_tow_array(int a[][COL_LEN], int row);
 void show_tow_array(int [][COL_LEN], int); // omit parameter name in typeproto
+
 
 int main(void){
     
@@ -48,11 +50,13 @@ int main(void){
     // show b_1
     printf("b_1:\n");
     show_tow_array(b_1, ROW_LEN);
+
+    return 0;
 }
 
 
 void show_one_pointer(int * a, int size){
-
+    assert(NULL != a);
     for (int i=0; i<size; i++ ){
         printf("%d ", a[i]);
     }
@@ -69,7 +73,7 @@ void show_one_array(int a [], int size){
 
 
 void show_two_pointer(int * a,  int row, int col){
-
+    assert(NULL != a)
     for (int i=0; i<row; i++ ){
         for (int j=0; j<col; j++){
             int * address = a + i*row + j;

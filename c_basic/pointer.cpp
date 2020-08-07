@@ -5,6 +5,7 @@
  * Time: 2020/7/23 PM 17:04                                      *
  * **************************************************************/
 #include <stdio.h>
+#include <assert.h>
 
 // #define
 
@@ -105,6 +106,8 @@ void pointer_start(){
 }
 
 int find_max_min_a(int* a, int n,  int* min, int* max){
+    assert(NULL != min);
+    assert(NULL != max);
 
     for(int i=0; i<n; i++){
         if (*(a+i) < * min){   
@@ -131,6 +134,8 @@ int find_max_min_a(int* a, int n,  int* min, int* max){
 // }
 
 int find_largest(int* a, int n){
+
+    assert(NULL != a);
     int * largest = a;
     for (int i=0; i<n; i++){
         if (*(a+i)> * largest){
@@ -142,6 +147,7 @@ int find_largest(int* a, int n){
 
 
 int find_row_largest_a(const int * a ,  int num_col , int dst_row ){
+    assert(NULL != a);
     int v_largest = *(a+ dst_row);
     for (int i=0; i<num_col; i++){
         if (*((a+dst_row)+i)>v_largest){
@@ -152,6 +158,8 @@ int find_row_largest_a(const int * a ,  int num_col , int dst_row ){
 }
 
 int find_row_largest_b(int* a  ,  int num_col , int dst_row ){
+
+    assert(NULL != a);
     int v_largest = *(a + dst_row);
     int * p=NULL;
     for ( p=a+dst_row*num_col; p<a+(dst_row+1)*num_col; p++){
@@ -164,6 +172,8 @@ int find_row_largest_b(int* a  ,  int num_col , int dst_row ){
 
 
 int find_col_largest_a(const int * a ,  int num_row , int dst_col){
+    
+    assert(NULL != a);
     int v_largest = *(a+ dst_col);
     
     for(int i=0; i<num_row; i++){
@@ -174,3 +184,4 @@ int find_col_largest_a(const int * a ,  int num_row , int dst_col){
     return v_largest;
 
 }
+
