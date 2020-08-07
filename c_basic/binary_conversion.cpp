@@ -10,10 +10,10 @@
 
 # define LEN 20
 
-int convert_char_to_digit(char); // only support 0~9
+int convert_char_to_digit(char); // only support '0'~'9'
 char convert_digit_to_char(int); // only support 0~9
-char digit_to_hex_char(int); // only support 0~16
-int hex_char_to_digit(char); // only support 0~16
+char digit_to_hex_char(int); // only support 0~15
+int hex_char_to_digit(char); // only support '0'~'9' 'A'~'F'
  
 void convert_int_to_str(int n, char *);
 int convert_str_to_int(char *);
@@ -107,15 +107,3 @@ int hex_char_to_digit(char c){
     }
     return n;
 } 
-    
-
-
-
-
-
-
-
-
-
-
-
