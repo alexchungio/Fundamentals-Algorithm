@@ -11,6 +11,8 @@
 #define CONTENT_LEN 20
 
 int count_spaces(const char * s);
+size_t get_strlen(const char *);
+char * concat_str(char *, const char *);
 
 int main(int argc, char *argv[]){
     
@@ -63,7 +65,14 @@ int main(int argc, char *argv[]){
     printf("compare %s and %s: %d\n", s_3, s_4, strcmp(s_3, s_4));
     printf("compare the front %d of %s and %s : %d\n", 3, s_3, s_4, strncmp(s_3, s_4, 3));
     printf("compare the front %d of %s and %s : %d\n", 6, s_3, s_4, strncmp(s_3, s_4, 6));
+
+    // get str length
+    printf("lenght of %s is %d\n", s_4, get_strlen(s_4));
+    
+    printf("concat result of %s and %s is ", s_4, s_5);
+    printf("%s\n", concat_str(s_4, s_5));
     return 0;
+
 
 }
 
@@ -76,6 +85,28 @@ int count_spaces(const char *s){
         }
     }
     return num_space;
+}
+
+size_t get_strlen(const char *s){
+    const char * p =  s;
+    while(*s){
+        s++;
+    }
+    return s - p;
+}
+
+
+char * concat_str(char* s1, const char* s2){
+    char * p = s1; // handle head of s1
+    // move to end of s1
+    while(*p){
+        p++;
+    }
+    while(*p++ = *s2++){
+       ;
+    }
+    
+    return s1;
 }
 
 
