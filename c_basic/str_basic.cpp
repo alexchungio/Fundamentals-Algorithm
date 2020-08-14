@@ -13,8 +13,13 @@
 int count_spaces(const char * s);
 size_t get_strlen(const char *);
 char * concat_str(char *, const char *);
+void traversal_str_array(char**, int);
 
 int main(int argc, char *argv[]){
+
+    /* for (int i=0; i< argc; i++){
+        printf("%s\n", argv[i]);
+    } */
     
     char const * s_1 = "are you ok";
     char s_2[] = "i'm fine thank you";
@@ -71,9 +76,12 @@ int main(int argc, char *argv[]){
     
     printf("concat result of %s and %s is ", s_4, s_5);
     printf("%s\n", concat_str(s_4, s_5));
+
+    // str array
+    char * menu[] = {"alex", "graham", "tomas", "kobe"};
+    traversal_str_array(menu, 4);
+    
     return 0;
-
-
 }
 
 int count_spaces(const char *s){
@@ -102,13 +110,18 @@ char * concat_str(char* s1, const char* s2){
     while(*p){
         p++;
     }
-    while(*p++ = *s2++){
-       ;
-    }
-    
+    while(*p++ = *s2++);
+
     return s1;
 }
 
+
+void traversal_str_array(char ** s, int capacity){
+    
+    for (int i=0; i<capacity; i++){
+        printf("%s\n", *(s+i));
+    }
+}
 
 
 
