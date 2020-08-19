@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define NUM 10
 #define LEN 20
 #define NUM_STRING 4
 
@@ -19,7 +20,7 @@ realloc 调整之前分配的内存块大小
 */
 
 int main(){
-    char *p;
+    char *p = NULL;
     if ((p = (char *) malloc(LEN + 1)) == NULL){
         printf("--No space Left---\n");
         exit(EXIT_FAILURE);
@@ -39,10 +40,15 @@ int main(){
     }
     // traversal and free sape
     for(int i=0; i<NUM_STRING; i++){
-        printf("%s ", s_1[i]);
+        printf("%s \n", s_1[i]);
         free(s_1[i]);
     }
 
+    int * i_0 = NULL;
+    printf("%d", sizeof(i_0));
+    if ((i_0 = (int *)malloc(NUM*sizeof(int))) == NULL){
+            printf("--No space left--\n");
+        }
     return 0;
     
 }
