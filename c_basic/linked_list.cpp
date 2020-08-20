@@ -15,7 +15,8 @@
 
 typedef int TYPE;
 
-struct node {
+struct node 
+{
     TYPE value;
     struct node * next;
 };
@@ -32,7 +33,8 @@ node * delete_node(node*, int);
 void traversal_linked(node *);
 
 
-int main(int argc, char*argv[]){
+int main(int argc, char*argv[])
+{
     
     node * head=NULL;
     
@@ -80,9 +82,11 @@ input：v
 output：NULL
 return：node *
 ***************************************************************/
-node * create_node(TYPE v){
+node * create_node(TYPE v)
+{
     node * new_node ;
-    if ((new_node = (node *)malloc(sizeof(node)))==NULL){
+    if ((new_node = (node *)malloc(sizeof(node)))==NULL)
+    {
         printf("--No space left--");
     }
     // method 1
@@ -102,9 +106,11 @@ input：linked list head, v
 output：NULL
 return：node *
 ***************************************************************/
-node * add_to_head(node * head, TYPE v){
+node * add_to_head(node * head, TYPE v)
+{
     node * new_head;
-    if ((new_head = (node *)malloc(sizeof(node)))==NULL){
+    if ((new_head = (node *)malloc(sizeof(node)))==NULL)
+    {
         printf("--Error: malloc failed to add_to_head--");
         exit(EXIT_FAILURE);
     }
@@ -123,17 +129,20 @@ input：linked list head, v
 output：NULL
 return：node *
 ***************************************************************/
-node * add_to_tail(node * head, TYPE v){
+node * add_to_tail(node * head, TYPE v)
+{
     
     // traversal to tail
     node * prob = head ;
-    while(prob->next != NULL){
+    while(prob->next != NULL)
+    {
         bool a = prob->next != NULL;
         prob = prob->next;
     }
     // crete node 
     node * new_node;
-    if ((new_node = (node *)malloc(sizeof(node)))==NULL){
+    if ((new_node = (node *)malloc(sizeof(node)))==NULL)
+    {
         printf("--Error: malloc failed to add_to_head--");
     }
     new_node->value = v;
@@ -152,12 +161,16 @@ input：linked list head
 output：NULL
 return：node *
 ***************************************************************/
-node * delete_from_head(node * head){
+node * delete_from_head(node * head)
+{
 
     node * prob = head;
-    if (prob == NULL){
+    if (prob == NULL)
+    {
         printf("Error: linked list is None");
-    }else{
+    }
+    else
+    {
         head = head->next;
         free(prob);     
     }
@@ -173,17 +186,23 @@ input：linked list head
 output：NULL
 return：node *
 ***************************************************************/
-node * delete_from_tail(node * head){
+node * delete_from_tail(node * head)
+{
     node * cur = NULL;
     node * prev = NULL;
-    if (head == NULL){
+    if (head == NULL)
+    {
         printf("Error: linked list is None");
-    }else{
+    }
+    else
+    {
         for(cur=head, prev; cur->next != NULL;prev=cur,cur=cur->next);
-        if(prev == NULL){  /*only one node*/
+        if(prev == NULL) /*only one node*/
+        {  
             head = NULL;
         }
-        else{
+        else
+        {
             prev->next = NULL;
         }
         free(cur);
@@ -203,13 +222,17 @@ return：node *
 ***************************************************************/
 node * search_linked(node* head, int v){
     node * prob = head;
-    while( prob != NULL && prob->value !=v){
+    while( prob != NULL && prob->value !=v)
+    {
         prob = prob->next;
     }
-    if (prob == NULL){
+    if (prob == NULL)
+    {
         printf("not fund %d in linked list\n", v);
         return NULL;
-    }else{
+    }
+    else
+    {
         return prob;
     }
 }
@@ -228,31 +251,41 @@ node * insert_node(node* head, int n, TYPE v){
     node * prev = NULL;
     /*插入到头节点*/
     node * new_node = NULL;
-    if ((new_node = (node *)malloc(sizeof(node)))==NULL){
+    if ((new_node = (node *)malloc(sizeof(node)))==NULL)
+    {
         printf("--Error: malloc failed to insert_node--");
     }
     
-    if (n==0){ 
+    if (n==0)
+    { 
         new_node->value = v;
         new_node->next = head;
         head = new_node;
-    }else{
-        while((n-- > 0) && (cur!= NULL)){
+    }
+    else
+    {
+        while((n-- > 0) && (cur!= NULL))
+        {
             prev = cur;
             cur = cur->next;
         }
-        if (n>0){
+        if (n>0)
+        {
             printf("the index %d out of range", n);
             free(new_node);
             exit(EXIT_FAILURE);
         /*insert tail*/
-        }else if(cur==NULL){
+        }
+        else if(cur==NULL)
+        {
 
             new_node->value = v;
             new_node->next = NULL;
             prev->next = new_node;
         /*insert internal*/
-        }else{
+        }
+        else
+        {
            new_node->value = v;
            new_node->next= cur;
            prev->next = new_node; 
@@ -271,22 +304,30 @@ input：linked list head, index n
 output：NULL
 return：node *
 ***************************************************************/
-node * delete_node(node* head, int n){
+node * delete_node(node* head, int n)
+{
     
     node * cur = head;
     node * prev = NULL;
-    if (n==0){
+    if (n==0)
+    {
         head = head->next;
         free(cur);
-    }else{
-        while((n-->0) && (cur->next!=NULL)){
+    }
+    else
+    {
+        while((n-->0) && (cur->next!=NULL))
+        {
             prev = cur;
             cur = cur->next;
         }
-        if(n>0){
+        if(n>0)
+        {
             printf("the index %d out of range", n);
             exit(EXIT_FAILURE);
-        }else{
+        }
+        else
+        {
             prev->next = cur->next;
             free(cur);
         }
@@ -304,10 +345,12 @@ input：linked list head
 output：node value
 return：NULL
 ***************************************************************/
-void traversal_linked(node * head){
+void traversal_linked(node * head)
+{
     
     node * prob = head;
-    while(prob != NULL){
+    while(prob != NULL)
+    {
         printf("%d ", prob->value);
         prob = prob->next;
     }
