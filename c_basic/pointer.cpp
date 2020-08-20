@@ -16,9 +16,11 @@ void pointer_start();
 int find_max_min_a(int *, int, int*, int*);
 int find_largest(int *, int);
 // int find_max_min_b(int *, int, int*, int*);
-int find_row_largest_a(const int * ,  int , int );//
+int find_row_largest_a(const int * ,  int , int );
 int find_row_largest_b(int * ,  int , int );
-int find_col_largest_a(const int * ,  int , int );//
+int find_col_largest_a(const int * ,  int , int );
+
+int max(int, int);
 
 int main(int argc, char *argv[]){
 
@@ -79,6 +81,9 @@ int main(int argc, char *argv[]){
     }
 
 
+    /*指向函数的指针*/
+    int (*p_max)(int, int) = max;
+    printf("max value of %d and %d is %d\n", 8, 20, (*p_max)(8, 20));
     return 0;
 }
 
@@ -183,5 +188,11 @@ int find_col_largest_a(const int * a ,  int num_row , int dst_col){
     }
     return v_largest;
 
+}
+
+
+int max(int a, int b){
+    
+    return a > b ? a : b;
 }
 
