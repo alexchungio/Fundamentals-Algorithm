@@ -4,7 +4,8 @@
 #include <string>
 
 
-class Stock{
+class Stock
+{
     private:
         std::string name_corporation;
         long num_shares;
@@ -27,7 +28,6 @@ class Stock{
         friend Stock operator *(double n, const Stock & s){ return s * n; };
         friend std::ostream & operator << (std::ostream &, const Stock &);
  
-
 };
 
 #endif

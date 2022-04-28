@@ -1,12 +1,10 @@
-
 #include <iostream>
 #include "stock.h"
 #include <map>
 
 
-
-
-int main(){
+int main()
+{
 
     std::cout << __cplusplus << std::endl;
     
@@ -26,7 +24,8 @@ int main(){
     multi_stock_4.show_info();
 
     std::cout << baidu_stock << std::endl << multi_stock_2 << std::endl;
-    
+
+    return 0; 
   
 }
 
