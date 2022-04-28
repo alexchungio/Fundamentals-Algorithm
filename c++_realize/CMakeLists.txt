@@ -3,6 +3,7 @@ project(cplusplus_experiment)
 
 # include directories
 include_directories(class)
+include_directories(template)
 
 # add subdirectory and build
 add_subdirectory(class)

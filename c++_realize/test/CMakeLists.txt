@@ -34,6 +34,6 @@ include_directories(
 # add execute source file
 add_eval(start start.cpp)
 add_eval(testStock test_stock.cpp)
-add_eval(functionTemplate ../template/function_template.cpp)
-add_eval(classTemplate ../template/class_template.cpp)
+add_eval(functionTemplateDemo ../template/function_template_demo.cpp)
+add_eval(classTemplateDemo ../template/class_template_demo.cpp)
 add_eval(structDemo ../struct/struct_demo.cpp)
