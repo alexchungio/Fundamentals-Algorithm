@@ -12,7 +12,7 @@ void swap_two(T & x, T & y)
     y = tmp;
 }
 
-// reload template
+// overload template
 template<typename T>
 void swap_tow(T *x, T *y)
 {
