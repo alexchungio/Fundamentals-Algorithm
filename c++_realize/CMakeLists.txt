@@ -7,6 +7,6 @@ include_directories(template)
 
 # add subdirectory and build
 add_subdirectory(class)
-add_subdirectory(test)
 add_subdirectory(template)
 add_subdirectory(struct)
+add_subdirectory(test)

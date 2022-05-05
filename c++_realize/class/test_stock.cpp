@@ -1,5 +1,5 @@
 #include <iostream>
-#include "stock.h"
+#include "stock.hpp"
 #include <map>
 
 

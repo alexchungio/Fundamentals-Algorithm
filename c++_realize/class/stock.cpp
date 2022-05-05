@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "stock.h"
+#include "stock.hpp"
 
 
 // void Stock::acquire(const std::string &  name, long num, double price)

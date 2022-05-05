@@ -6,13 +6,6 @@
 
 class Stock
 {
-    private:
-        std::string name_corporation;
-        long num_shares;
-        double price_shares;
-        double val_shares;
-        void set_total_val(){ val_shares = num_shares * price_shares;}
-
     public:
         Stock(); // default construct 
         Stock(const std::string &, long, double); //construct
@@ -27,6 +20,12 @@ class Stock
         Stock operator *(double) const;
         friend Stock operator *(double n, const Stock & s){ return s * n; };
         friend std::ostream & operator << (std::ostream &, const Stock &);
+    private:
+        std::string name_corporation;
+        long num_shares;
+        double price_shares;
+        double val_shares;
+        void set_total_val(){ val_shares = num_shares * price_shares;}
  
 };
 

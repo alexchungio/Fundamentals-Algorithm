@@ -37,5 +37,4 @@ int main()
     std::cout << "a = " << a << " b = "<< b << std::endl;
     std::cout << "c = " << c << " d = "<< d << std::endl;
     
-    
 }
