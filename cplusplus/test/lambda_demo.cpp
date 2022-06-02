@@ -28,7 +28,52 @@ void print_vector(std::vector<int> v)
 
 int main()
 {
-    std::vector<int> v = {3, 1, 4, 5, 2, 0};
+    std::vector<int> v = {3, 1, 4, 5, 2, 0, 1, 2, 3};
     print_vector(v);
+
+    // non-increasing sort
+    sort(v.begin(), v.end(), [](const int &a, const int &b) -> bool
+    {
+        return a > b;
+    });
+    print_vector(v);
+    
+    // remove duplicate element
+    std::vector<int>::iterator p;
+    p = unique(v.begin(), v.end(), [](int a, int b)
+    {
+        return a == b;
+    });
+    // resize the vector so as to remove the undefined terms
+    v.resize(distance(v.begin(), p));
+    print_vector(v);
+
+    /*
+    [&] : capture all external variable by reference 
+    [=] : capture all external variable by value 
+    [a, &b] : capture a by value and b by reference
+    */
+
+    std::vector<int> v_1 = {3, 1, 5};
+    std::vector<int> v_2 = {7, 9, 12, 4};
+    
+    auto push_into = [&](int m)
+    {
+        v_1.push_back(m);
+        v_2.push_back(m);
+    };
+    push_into(6);
+    print_vector(v_1);
+    print_vector(v_2);
+
+    const int N = 4;
+    int count_greater_n = count_if(v_2.begin(), v_2.end(), [=](int a)
+    {
+        return a>N;
+    });
+    std::cout << count_greater_n << std::endl;
+
+
+
     return 0;
 }
