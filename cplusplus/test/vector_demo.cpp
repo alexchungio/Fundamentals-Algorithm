@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+s
 int main()
 {   
     // 1-dimension array
@@ -43,9 +43,5 @@ int main()
             cout << j << endl;
         }
     }
-
-
-    cout << v_1[1][2] << endl;
-
     return 0;
 }
