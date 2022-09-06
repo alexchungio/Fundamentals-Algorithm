@@ -21,8 +21,7 @@ int maxValue(vector<int>& weight, vector<int>& value, int bag_weight)
             else 
             {
                 dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i]);
-            }
-            
+            }   
         }
     }
 
