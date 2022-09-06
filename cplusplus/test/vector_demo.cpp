@@ -6,7 +6,6 @@
 
 using namespace std;
 
-s
 int main()
 {   
     // 1-dimension array
