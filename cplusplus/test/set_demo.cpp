@@ -31,7 +31,7 @@ int main()
     }
 
     // erase
-    set<string>::iterator iter_1 = s_0.find("tim");
+    set<string>::iterator iter_1 = s_0.find("bili");
     if(iter_1 != s_0.end())
     {
         s_0.erase(iter_1);
