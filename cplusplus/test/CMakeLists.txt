@@ -40,4 +40,8 @@ add_eval(classTemplateDemo class_template_demo.cpp)
 add_eval(lambdaDemo lambda_demo.cpp)
 add_eval(structDemo ../struct/struct_demo.cpp)
 add_eval(vectorDemo vector_demo.cpp)
+add_eval(stringDemo string_demo.cpp)
+add_eval(mapDemo map_demo.cpp)
+add_eval(setDemo set_demo.cpp)
 add_eval(bag01 bag_01.cpp)
+
