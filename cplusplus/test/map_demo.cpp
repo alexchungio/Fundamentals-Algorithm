@@ -24,8 +24,6 @@ int main()
         cout << m.first << ":" << m.second << endl;
     }
 
-    return 0;
-
     // find key
     map<int, string>::iterator iter_0 = m_0.find(1);
     if (iter_0 != m_0.end())
@@ -39,8 +37,14 @@ int main()
     {
         m_0.erase(iter_1);
     }
-
+    
     // std::tie <=> std::map
-
+    bool is_inserted;
+    tie(ignore, is_inserted) = m_0.insert(pair<int, string>(2, "mark"));
+    if(is_inserted)
+    {
+        cout << "Value was inserted successfully" << endl;
+    }
+    
     return 0;
 }
