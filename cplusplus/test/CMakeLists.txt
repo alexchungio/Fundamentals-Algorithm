@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION VERSION 2.6)
 project(test)
 
-find_package(OpenCV REQUIRED)
+# find_package(OpenCV REQUIRED)
 
 # config variable
 set(TEST_DIR "${CMAKE_CURRENT_LIST_DIR}")
@@ -11,7 +11,7 @@ macro(add_eval name sources)
     # execute project
     add_executable(${name}  ${sources})
     # Specify libraries when linking target
-    target_link_libraries(${name} ${OpenCV_LIBS})
+    # target_link_libraries(${name} ${OpenCV_LIBS})
     target_link_libraries(${name} class)
     target_link_libraries(${name} template)
     
@@ -45,3 +45,5 @@ add_eval(mapDemo map_demo.cpp)
 add_eval(setDemo set_demo.cpp)
 add_eval(tupleDemo tuple_demo.cpp)
 add_eval(bag01 bag_01.cpp)
+add_eval(linkedDemo ../linked_list/linked_demo.cpp)
+add_eval(getNext ../kmp/get_next.cpp)
