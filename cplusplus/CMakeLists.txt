@@ -1,11 +1,14 @@
 cmake_minimum_required(VERSION VERSION 2.6)
 project(cplusplus_experiment)
 
-# all compile define
-add_compile_definitions(TEST_DATA="${PROJECT_SOURCE_DIR}/test/data/")
-
 # set cmaker standard
 set(CMAKE_CXX_STANDARD 11)
+
+# find opencv package
+find_package(OpenCV REQUIRED)
+
+# all compile define
+add_compile_definitions(TEST_DATA="${PROJECT_SOURCE_DIR}/test/data/")
 
 # include directories
 include_directories(class)

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION VERSION 2.6)
 project(test)
 
-find_package(OpenCV REQUIRED)
+
 
 # config variable
 set(TEST_DIR "${CMAKE_CURRENT_LIST_DIR}")
@@ -28,10 +28,11 @@ include_directories(
     ${OpenCV_INCLUDE_DIR}
 )
 
-include_directories(
-    "${CMAKE_CURRENT_LIST_DIR}/class"
-    "${CMAKE_CURRENT_LIST_DIR}/template"
-)
+# include_directories(
+#     "${CMAKE_CURRENT_LIST_DIR}/class"
+#     "${CMAKE_CURRENT_LIST_DIR}/template"
+# )
+
 # add execute source file
 add_eval(cvDemo cv_demo.cpp)
 add_eval(testStock test_stock.cpp)
