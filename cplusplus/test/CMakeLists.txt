@@ -1,32 +1,19 @@
 cmake_minimum_required(VERSION VERSION 2.6)
 project(test)
 
-
-
 # config variable
-set(TEST_DIR "${CMAKE_CURRENT_LIST_DIR}")
+# set(TEST_DIR "${CMAKE_CURRENT_LIST_DIR}")
 
 # generate macro execute 
 macro(add_eval name sources)
     # execute project
     add_executable(${name}  ${sources})
-    # Specify libraries when linking target
     target_link_libraries(${name} ${OpenCV_LIBS})
     target_link_libraries(${name} class)
     target_link_libraries(${name} template)
     
 endmacro(add_eval)
 
-# generate share|static library
-# add_library(common STATIC util.cpp) 
-# add_library(common SHARED util.cpp)
-
-# add include file
-include_directories(
-    ${CMAKE_CURRENT_BINARY_DIR} 
-    ${CMAKE_CURRENT_LIST_DIR}
-    ${OpenCV_INCLUDE_DIR}
-)
 
 # add execute source file
 add_eval(cvDemo cv_demo.cpp)
@@ -45,3 +32,4 @@ add_eval(linkedDemo ../linked_list/linked_demo.cpp)
 add_eval(getNext ../kmp/get_next.cpp)
 add_eval(findSubSequence ../leetcode/find_sub_sequences.cpp)
 add_eval(candy ../leetcode/candy.cpp)
+add_eval(eigenDemo ../eigen_example/eigen_demo.cpp)
