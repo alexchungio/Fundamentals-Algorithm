@@ -14,12 +14,24 @@ add_compile_definitions(TEST_DATA="${PROJECT_SOURCE_DIR}/test/data/")
 include_directories(class)
 include_directories(template)
 
-# add subdirectory and build
-add_subdirectory(class)
-add_subdirectory(template)
-add_subdirectory(struct)
-add_subdirectory(test)
-# add_subdirectory(linked_list)
-add_subdirectory(kmp)
-add_subdirectory(leetcode)
-# add_subdirectory(interview)
+set(COMMON_LISTS
+    class
+    interview
+    kmp
+    leetcode
+    linked_list
+    struct
+    template
+    test)
+
+foreach(COMMON_ITER ${COMMON_LISTS})
+    add_subdirectory(${COMMON_ITER})
+endforeach(COMMON_ITER)
+# # add subdirectory and build
+# add_subdirectory(class)
+# add_subdirectory(template)
+# add_subdirectory(struct)
+# add_subdirectory(test)
+# # add_subdirectory(linked_list)
+
+# # add_subdirectory(interview)
