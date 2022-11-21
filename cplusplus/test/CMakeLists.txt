@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION VERSION 2.6)
+cmake_minimum_required(VERSION VERSION 3.0)
 project(test)
 
 # config variable
@@ -13,6 +13,11 @@ macro(add_eval name sources)
     target_link_libraries(${name} template)
     
 endmacro(add_eval)
+
+include_directories(
+    class
+    
+)
 
 
 # add execute source file

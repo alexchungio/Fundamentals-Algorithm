@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION VERSION 2.6)
+cmake_minimum_required(VERSION VERSION 3.0)
 project(class)
 
 set(SRC_LIST stock.cpp)
