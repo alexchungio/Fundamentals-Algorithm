@@ -2,6 +2,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/dnn.hpp>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ std::tuple<int, int, int> get_shape(cv::Mat image)
 void image_to_tensor(std::string filename, const int input_size[2], const float mean[3], const float std[3])
 {
     int height, width, channels;
-    cv::Mat bgr_img, dst_img;
+    cv::Mat bgr_img, dst_img, tensor_img;
     bgr_img = cv::imread(filename, cv::IMREAD_COLOR);
     // get shape
     std::tie(height, width, channels) = get_shape(bgr_img);
@@ -63,6 +64,10 @@ void image_to_tensor(std::string filename, const int input_size[2], const float 
     // cv::Vec3f pixel_val_sub_mean_divide_std = dst_img.at<cv::Vec3f>(0, 0);
 
     // convert to tensor
+    // HWC => NCNW
+    cv::dnn::blobFromImage(dst_img, tensor_img, 1.0, cv::Size(224, 224));
+    auto c = tensor_img.size().height;
+
     cv::imshow("image", bgr_img);
 }
 
