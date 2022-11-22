@@ -21,7 +21,7 @@ include_directories(
 
 
 # add execute source file
-add_eval(cvDemo cv_demo.cpp)
+add_eval(cvDemo ../cv_example/cv_demo.cpp)
 add_eval(testStock test_stock.cpp)
 add_eval(functionTemplateDemo function_template_demo.cpp)
 add_eval(classTemplateDemo class_template_demo.cpp) 
