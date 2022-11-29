@@ -19,7 +19,6 @@ cv::Vec<T, 3> get_pixel_value(T* img_ptr, int cols, int channels, int x, int y)
     return pixel_val; 
 }
 
-
 std::tuple<int, int, int> get_shape(cv::Mat image)
 {   
     // (height, width, channels)
@@ -31,8 +30,7 @@ std::tuple<int, int, int> get_shape(cv::Mat image)
      
 }
 
-void image_to_tensor(const std::string filename, const cv::Size & input_size, 
-                     const cv::Scalar mean, const cv::Scalar std)
+void image_to_tensor(const std::string filename, const cv::Size & input_size, const cv::Scalar mean, const cv::Scalar std)
 {
     int height, width, channels;
     cv::Mat bgr_img, dst_img, tensor_img;
@@ -76,7 +74,6 @@ void image_to_tensor(const std::string filename, const cv::Size & input_size,
     float r_0_val = data_ptr[75376];
 
     cv::imshow("image", bgr_img);
-
 }
 
 // void infile_to_cv(std::string filename)
@@ -94,7 +91,6 @@ void image_to_tensor(const std::string filename, const cv::Size & input_size,
 //     cv::waitKey();
 
 // }
-
 
 void mat_to_array(cv::Mat img)
 {
@@ -116,15 +112,13 @@ void mat_to_array(cv::Mat img)
     cv::waitKey(0);
 }
 
-
-void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_,
-    cv::Size size_, const cv::Scalar& mean_, const cv::Scalar& std_, bool is_bgr_ = false)
+void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_, cv::Size size_, 
+                       const cv::Scalar& mean_, const cv::Scalar& std_, bool is_bgr_ = false)
 {
-    //CV_TRACE_FUNCTION();
+    // image preprocess
     std::vector<cv::Mat> images;
     images_.getMatVector(images);  // Array to Mat
     CV_Assert(!images.empty());
-
     for (int i = 0; i < images.size(); i++)
     {
         cv::Size img_size = images[i].size();
@@ -133,7 +127,7 @@ void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_,
         {
             resize(images[i], images[i], size_, 0, 0, cv::INTER_LINEAR);
         }
-        // convert to bgr
+        // convert bgr to rgb
         if(is_bgr_)
         {
             cv::cvtColor(images[i], images[i], cv::COLOR_BGR2RGB);
@@ -143,8 +137,9 @@ void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_,
             images[i].convertTo(images[i], CV_32F, 1.0 / 255.);
         cv::subtract(images[i], mean_, images[i]);
         cv::divide(images[i], std_, images[i]);
-        cv::Vec3f pixel_val_sub_mean_divide_std = images[i].at<cv::Vec3f>(0, 0);
+        // cv::Vec3f pixel_val_sub_mean_divide_std = images[i].at<cv::Vec3f>(0, 0);
     }
+
     // convert mat to tensor
     size_t _, num_imgs = images.size();
     int height = images[0].rows;
@@ -152,7 +147,6 @@ void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_,
     int num_chs = images[0].channels();
     CV_Assert(images[0].dims == 2);
     CV_Assert(images[0].depth() == CV_32F);
-    
     if (num_chs == 3 || num_chs == 4)
     {
         int blob_size[] = {(int)num_imgs, num_chs, height, width};
@@ -190,7 +184,6 @@ void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_,
     // cv:;waitKey(0);
 }
 
-
 cv::Mat blob_from_images(cv::InputArrayOfArrays images, cv::Size size,
     const cv::Scalar& mean, const cv::Scalar& std_num, bool is_bgr)
 {
@@ -200,24 +193,23 @@ cv::Mat blob_from_images(cv::InputArrayOfArrays images, cv::Size size,
     return blob;
 }
 
-
-int main(){
+int main()
+{
     std::string img_path = TEST_DATA "sunflower.jpg";
-    // const int input_size[2] = {224, 224};
-    // const float mean[3] = {0.485f, 0.456f, 0.406f};
-    // const float std[3] = {0.229f, 0.224f, 0.225f};
     const cv::Size input_size = {224, 224};
     const cv::Scalar mean = {0.485f, 0.456f, 0.406f};
     const cv::Scalar std = {0.229f, 0.224f, 0.225f};
 
     //mat_to_array(img);
-
     // image_to_tensor(img_path, input_size, mean, std);
 
     // custom image to tensor
     cv::Mat img = cv::imread(img_path);
+    auto start = std::chrono::system_clock::now();
     std::vector<cv::Mat> blob_img = {img};
     cv::Mat blob = blob_from_images(blob_img, input_size, mean, std, true);
+    auto end = std::chrono::system_clock::now();
+    std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms" << std::endl;
 
     cv::waitKey();
     
