@@ -145,13 +145,14 @@ void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_, cv
     int height = images[0].rows;
     int width = images[0].cols;
     int num_chs = images[0].channels();
+    cv::Mat blob;
     CV_Assert(images[0].dims == 2);
     CV_Assert(images[0].depth() == CV_32F);
     if (num_chs == 3 || num_chs == 4)
     {
         int blob_size[] = {(int)num_imgs, num_chs, height, width};
         blob_.create(4, blob_size, CV_32F);  // allocate memery
-        cv::Mat blob = blob_.getMat();  
+        blob = blob_.getMat();  
         cv::Mat img_chs[4]; 
 
         for (int i = 0; i < num_imgs; i++)
@@ -179,9 +180,9 @@ void _blob_from_images(cv::InputArrayOfArrays images_, cv::OutputArray blob_, cv
     }
     // verification
     // get (0, 1, 112, 112) => 224 * 224 + 224 * 112 + 112 = 75376 pixel value => 2.1309526
-    // float * data_ptr = (float *)blob.data;
-    // float r_0_val = data_ptr[75376];
-    // cv:;waitKey(0);
+    float * data_ptr = (float *)blob.data;
+    float r_0_val = data_ptr[0];
+    cv::waitKey(0);
 }
 
 cv::Mat blob_from_images(cv::InputArrayOfArrays images, cv::Size size,
@@ -201,7 +202,7 @@ int main()
     const cv::Scalar std = {0.229f, 0.224f, 0.225f};
 
     //mat_to_array(img);
-    // image_to_tensor(img_path, input_size, mean, std);
+    image_to_tensor(img_path, input_size, mean, std);
 
     // custom image to tensor
     cv::Mat img = cv::imread(img_path);
