@@ -2,9 +2,32 @@
 # include <iostream>
 # include <vector>
 # include <algorithm>
+#include <functional>
+#include <numeric>
 
 
 using namespace std;
+
+template<typename T>
+void print(const std::string & prefix, std::vector<T> value)
+{
+    std::cout << prefix << ": ";
+    for(auto v: value)
+    {
+        std::cout << v << " ";
+    }
+    std::cout << std::endl;  
+}
+
+template<typename T>
+std::vector<size_t> argmax_idx(std::vector<T> v)
+{
+    std::vector<size_t> idx(v.size());
+    std::iota(idx.begin(), idx.end(), 0);
+    std::sort(idx.begin(), idx.end(), [&v](size_t i, size_t j){return v[i] > v[j];});
+    return idx;
+}
+
 
 int main()
 {   
@@ -42,6 +65,18 @@ int main()
             cout << j << endl;
         }
     }
+
+    // sort
+    std::vector<int> v_2 = {5, 7, 4, 2, 8, 6, 1, 9, 0, 3};
+    print("v_2", v_2);
+
+    // std::sort(v_2.begin(), v_2.end(), [](int a, int b){return a > b;});
+    // print("v_2 sorted from high to low", v_2);
+
+    std::vector<size_t> v_3 = argmax_idx(v_2);
+    print("sorted idx", v_3);
+
     
+
     return 0;
 }
