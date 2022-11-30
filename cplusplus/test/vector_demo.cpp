@@ -60,16 +60,12 @@ int main()
     // traverse-1
     for(int i=0; i<v_1.size(); i++)
     {
-        for(int j=0; j<v_1[i].size(); j++)
-        cout << v_1[i][j] << endl;
+        print("v_1["+std::to_string(i)+"]", v_1[i]);
     }
     // traverse-2
-    for(auto i: v_1)
+    for(auto m: v_1)
     {
-        for(auto j: i)
-        {
-            cout << j << endl;
-        }
+        print("v_1", m); 
     }
 
     // sort
