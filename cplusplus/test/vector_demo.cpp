@@ -28,6 +28,12 @@ std::vector<size_t> argmax_idx(std::vector<T> v)
     return idx;
 }
 
+template<typename T>
+void iota(std::vector<T>& v, int n)
+{
+    std::generate(v.begin(), v.end(), [&n](){return n++;});
+    
+}
 
 int main()
 {   
@@ -72,11 +78,27 @@ int main()
 
     // std::sort(v_2.begin(), v_2.end(), [](int a, int b){return a > b;});
     // print("v_2 sorted from high to low", v_2);
-
     std::vector<size_t> v_3 = argmax_idx(v_2);
     print("sorted idx", v_3);
 
-    
+    // vector generate
+    std::vector<int> v_4(10);
+    iota(v_4, 0);
+    print("v_4", v_4);
+
+    // vector fill
+    std::vector<int> v_5(10);
+    std::fill(v_5.begin(), v_5.end(), 1);
+    print("v_5", v_5);
+
+    // copy
+    std::vector<int> v_6(10), v_7(10), v_8(10);
+    std::copy(v_4.begin(), v_4.end(), std::back_inserter(v_6));
+    std::copy_backward(v_4.begin(), v_4.begin()+6, v_7.end());
+    std::reverse_copy(v_4.begin(), v_4.end(), v_8.begin());
+    print("v_6", v_6);
+    print("v_7", v_7);
+    print("v_8", v_8);
 
     return 0;
 }
