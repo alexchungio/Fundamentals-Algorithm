@@ -90,13 +90,35 @@ void weak_ptr_demo()
     std::cout << "********************"<< std::endl;
 }
 
+void convert_smart_pointer_demo()
+{
+    // convert to smart pointer
+    int v_0[5] = {0, 1, 2, 3, 4};
+    std::unique_ptr<int> p_0(v_0);
+    std::cout << "p_0: " << p_0.get()[0] << std::endl;
+
+    std::unique_ptr<int> p_1(nullptr);
+    p_1.reset(v_0);
+    std::cout << "p_1: " << p_1.get()[1] << std::endl;
+
+    auto p_2 = std::make_unique<int>(5);
+    p_2.reset(v_0);
+    std::cout << "p_1: " << p_1.get()[2] << std::endl;
+
+    // convert from smart pointer
+    int * v_2 = p_0.get();
+    std::cout << "v_2: " << v_2[0] << std::endl;
+    
+    std::cout << "********************"<< std::endl;
+}
+
 
 int main()
 { 
     unique_ptr_demo();
     shared_ptr_demo();
     weak_ptr_demo();
-
+    convert_smart_pointer_demo();
     
     return 0;
 }
