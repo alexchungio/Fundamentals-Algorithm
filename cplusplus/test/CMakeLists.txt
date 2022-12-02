@@ -8,10 +8,8 @@ project(test)
 macro(add_eval name sources)
     # execute project
     add_executable(${name}  ${sources})
-    target_link_libraries(${name} ${OpenCV_LIBS})
-    target_link_libraries(${name} class)
-    target_link_libraries(${name} template)
-    
+    target_link_libraries(${name} 
+                          ${OpenCV_LIBS} class template)
 endmacro(add_eval)
 
 include_directories(

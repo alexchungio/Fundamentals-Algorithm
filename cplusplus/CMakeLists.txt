@@ -3,7 +3,7 @@ project(cplusplus_experiment)
 
 
 # set variable a value
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 # all compile define
 add_compile_definitions(TEST_DATA="${PROJECT_SOURCE_DIR}/test/data/")

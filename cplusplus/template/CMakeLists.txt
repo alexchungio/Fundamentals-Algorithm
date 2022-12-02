@@ -9,4 +9,4 @@ file(GLOB_RECURSE HEAD_LIST "${CMAKE_CURRENT_LIST_DIR}/*.hpp")
 file(GLOB_RECURSE SRC_LIST "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
 
 # add libarary to project
-add_library(template ${SRC_LIST} ${HEAD_LIST})
+add_library(template ${SRC_LIST} )
