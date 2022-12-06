@@ -1,0 +1,4 @@
+build
+.vscode
+../python/.idea/*
+../*/DS_Store
