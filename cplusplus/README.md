@@ -1,6 +1,6 @@
-## ## install
+## install
 
-### gdb
+### gdb(macos)
 
 * step0
   ```
