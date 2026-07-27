@@ -24,9 +24,18 @@ class Solution:
 
         while(dummy_a != dummy_b):
             
+            # Move pointer A one step forward.
+            # If it reaches the end of list A,
+            # redirect it to the head of list B.
             dummy_a = dummy_a.next if dummy_a else headB
+            # Move pointer B one step forward.
+            # If it reaches the end of list B,
+            # redirect it to the head of list A.
             dummy_b = dummy_b.next if dummy_b else headA
 
+        # Either:
+        # 1. Both pointers meet at the intersection node
+        # 2. Both pointers become None (no intersection)
         return dummy_a  # intersection val 
      
         
