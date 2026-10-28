@@ -7,6 +7,12 @@
 # @lc code=start
 class Solution:
     def climbStairs(self, n: int) -> int:
+
+        # dp formula description:
+        # there are only two possibilities for the last step:
+        # 1. Climb 1 step from step i - 1.
+        # 2. Climb 2 steps from step i - 2.
+        # # dp[n] = dp[n-1] + dp[n-2]
         
         if n == 1:
             return 1
