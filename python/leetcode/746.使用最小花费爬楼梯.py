@@ -9,6 +9,12 @@ class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
 
 
+        # dp formula description:
+        # there are only two possibilities for the last step:
+        # 1. Climb 1 step from step i - 1.
+        # 2. Climb 2 steps from step i - 2.
+        # dp[i] = min(dp[i-1] + cost[i-1], dp[i-2]+cost[i-2])
+        
         # create dp array
         # dp[*]: number of climb method
         dp = [0] * 2
