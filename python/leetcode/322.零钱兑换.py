@@ -12,7 +12,13 @@ class Solution:
         # Greedy algorithm incorrect
         # DP(complete backpack)
 
+        # dp formula description:
         # dp[i] stores the minimum number of coins needed to form amount i.
+        # there are only two possibilities for the last step:
+        # 1. Do not use the current coin, then the previous amount is m.
+        # 2. Use one more current coin, then the previous amount is m - c
+        # dp[m] = min(dp[m], dp[m-c]+1) for all c
+
 
         # initial dp array
         dp = [float('inf')] * (amount + 1) 
